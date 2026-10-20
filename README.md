@@ -6,6 +6,19 @@
 
 起因：在 UI 里切一次模型，会把 `cordis.yml` 里的默认模型一起改掉（还会丢掉 `reasoningEffort` 行），于是心跳、看板定时任务、新会话全都跟着换模型。本插件把这件事变成显式开关。
 
+## 安装
+
+```powershell
+# 先看会做什么（不写任何文件）
+pwsh -File scripts/install-profile.ps1 -DryRun
+
+# 装进目标 profile（自动备份 package.json 与 cordis.patch.yml）
+pwsh -File scripts/install-profile.ps1 -Profile "$env:USERPROFILE\.dsh\profiles\desktop"
+```
+
+重载插件后，设置页出现「默认模型锁定」一节；改源码后必须重载/重启 DSH 才生效（刷新页面不够）。
+卸载与还原步骤见 [docs/INSTALL.md](docs/INSTALL.md)。
+
 ## 行为
 
 - **聊天里仍可自由切换模型**：`session.selectModel()` 只影响当前会话。

@@ -6,6 +6,20 @@ A shared-default-model lock for DeepSeek Harness. Pick a provider, a model and a
 
 Why it exists: switching the model once in the UI also rewrites the default in `cordis.yml` (and drops the `reasoningEffort` line), so heartbeats, scheduled board runs and new sessions silently change model too. This plugin makes that an explicit switch instead.
 
+## Install
+
+```powershell
+# Dry run first — writes nothing
+pwsh -File scripts/install-profile.ps1 -DryRun
+
+# Install into a profile (backs up package.json and cordis.patch.yml)
+pwsh -File scripts/install-profile.ps1 -Profile "$env:USERPROFILE\.dsh\profiles\desktop"
+```
+
+After reloading the plugin, a "Default Model Lock" section appears in Settings. Editing plugin
+sources requires a reload/restart of DSH — refreshing the page is not enough.
+Uninstall and restore steps: [docs/INSTALL.md](docs/INSTALL.md).
+
 ## Behavior
 
 - **Chat model switching keeps working**: `session.selectModel()` still applies to the current session.
