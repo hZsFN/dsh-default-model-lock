@@ -1,0 +1,21 @@
+{
+  "name": "dsh-default-model-lock",
+  "version": "0.1.0",
+  "description": "在设置页固定共享默认模型，并在会话模型选择器保存默认值前拦截写入",
+  "type": "module",
+  "main": "index.js",
+  "exports": {".": "./index.js", "./client": "./lib/client.js", "./package.json": "./package.json"},
+  "files": ["index.js", "core.mjs", "lib", "cordis.patch.yml", "README.md", "README_EN.md", "docs"],
+  "engines": {"node": ">=22.19.0"},
+  "dsh": {
+    "engines": {"dsh": ">=0.2.1-rc.2"},
+    "bundle": {"patch": "./cordis.patch.yml"},
+    "client": {
+      "inject": ["@deepseek-ai/dsh-client-connection", "@deepseek-ai/dsh-client-ui-settings", "@deepseek-ai/dsh-api-session-controller"],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {"@deepseek-ai/dsh": ">=0.2.1-rc.2", "@deepseek-ai/cordis": "~4.0.5", "@deepseek-ai/schemastery": "~3.18.5", "react": "^18.2.0"},
+  "scripts": {"test": "node --test test/*.test.mjs", "check": "node --check index.js && node --check core.mjs && node --check lib/client.js"},
+  "license": "MIT"
+}

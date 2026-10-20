@@ -1,0 +1,12 @@
+{
+  "name": "build-client",
+  "private": true,
+  "status": "obsolete",
+  "description": "已废弃（2026-10-20）。客户端产物 lib/client.js 是手写模块，必须自带 window.__ModuleLoader__.load({ id, inject, apply, factory }) 封装；esbuild 的 ESM 输出无法向页面注册自己，所以这里没有构建步骤。校验请改用：node --check lib/client.js && npm test。",
+  "whyNoBundler": [
+    "页面通过 window.__ModuleLoader__.load(definition) 收客户端插件；definition 需要 id / inject / apply / factory。",
+    "factory(require) 的 require 只解析已声明注入的包（react 等），因此插件不能依赖额外运行时包。",
+    "产物是单文件 ESM 之外的普通脚本，交给 loader 而不是 <script type=module>。"
+  ],
+  "checks": ["node --check lib/client.js", "npm test"]
+}

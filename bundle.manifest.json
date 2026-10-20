@@ -1,0 +1,23 @@
+{
+  "pluginEntry": "default-model-lock",
+  "packageName": "dsh-default-model-lock",
+  "runtime": ["index.js", "core.mjs", "cordis.patch.yml"],
+  "clientArtifact": "lib/client.js",
+  "clientNotes": "手写 `window.__ModuleLoader__.load({ id, inject, apply, factory })` 模块，无构建步骤。client/index.tsx 与 client/types.ts 是类型参考与迁移记录，不参与安装。",
+  "namespace": "default-model-lock",
+  "settingsSection": {
+    "slot": "settings.section",
+    "registration": "ctx.slots.inject('settings.section', () => ctx.slots.register({ name, id, order, label, inject }, Component))",
+    "transport": "ctx.remote.session.modelCatalog() -> Typert { ok, value }",
+    "writePath": "ctx.configForms.get('default-model-lock').mutate(ops, revision)"
+  },
+  "docs": ["README.md", "README_EN.md", "docs/INSTALL.md"],
+  "tests": ["test/core.test.mjs", "test/client.test.mjs"],
+  "config": {
+    "enabled": "boolean",
+    "provider": "string",
+    "model": "string",
+    "reasoningEffort": "string (empty omitted)"
+  },
+  "desktop": ">=0.2.1-rc.2"
+}

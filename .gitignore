@@ -1,0 +1,6 @@
+node_modules/
+.sandbox/
+.install-backup/
+*.bak-*
+*.log
+.DS_Store

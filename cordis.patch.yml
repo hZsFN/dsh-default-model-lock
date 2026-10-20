@@ -1,0 +1,8 @@
+- insert:
+    - id: default-model-lock
+      name: dsh-default-model-lock
+      config:
+        enabled: false
+        provider: ''
+        model: ''
+        reasoningEffort: ''
