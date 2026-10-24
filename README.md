@@ -8,7 +8,7 @@
 
 ## 安装
 
-已发布到 npm：[dsh-default-model-lock](https://www.npmjs.com/package/dsh-default-model-lock)（当前 0.1.0）。
+已发布到 npm：[dsh-model-lock](https://www.npmjs.com/package/dsh-model-lock)（当前 0.1.0）。
 在 DSH 的插件页面按包名安装即可；也可以从源码装进指定 profile：
 
 ```powershell

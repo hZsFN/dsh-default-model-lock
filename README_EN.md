@@ -8,7 +8,7 @@ Why it exists: switching the model once in the UI also rewrites the default in `
 
 ## Install
 
-Published on npm: [dsh-default-model-lock](https://www.npmjs.com/package/dsh-default-model-lock) (0.1.0).
+Published on npm: [dsh-model-lock](https://www.npmjs.com/package/dsh-model-lock) (0.1.0).
 Install it by package name from the DSH plugin page, or from source into a specific profile:
 
 ```powershell

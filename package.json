@@ -1,5 +1,5 @@
 {
-  "name": "dsh-default-model-lock",
+  "name": "dsh-model-lock",
   "version": "0.1.0",
   "description": "在设置页固定共享默认模型，并在会话模型选择器保存默认值前拦截写入",
   "type": "module",
