@@ -16,7 +16,7 @@ $backupDir = Join-Path $PluginPath ".install-backup\$stamp"
 $insert = @"
 - insert:
     - id: default-model-lock
-      name: dsh-default-model-lock
+      name: dsh-model-lock
       config:
         enabled: false
         provider: ''
@@ -43,17 +43,17 @@ if (-not $pkg.dependencies) {
   $pkg | Add-Member -NotePropertyName dependencies -NotePropertyValue ([pscustomobject]@{}) -Force
 }
 $link = 'link:' + ($PluginPath -replace '\\', '/')
-$existing = $pkg.dependencies.'dsh-default-model-lock'
+$existing = $pkg.dependencies.'dsh-model-lock'
 if ($existing -eq $link) {
   Write-Host '依赖已存在且指向同一路径，跳过。'
 } else {
-  $pkg.dependencies | Add-Member -NotePropertyName 'dsh-default-model-lock' -NotePropertyValue $link -Force
+  $pkg.dependencies | Add-Member -NotePropertyName 'dsh-model-lock' -NotePropertyValue $link -Force
   $pkg | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $pkgPath -Encoding utf8
   Write-Host "已写入 link 依赖: $link"
 }
 
 $patchText = Get-Content -LiteralPath $patchPath -Raw -Encoding utf8
-if ($patchText -match 'dsh-default-model-lock') {
+if ($patchText -match 'dsh-model-lock') {
   Write-Host 'cordis.patch.yml 已含该插件条目，跳过。'
 } else {
   if ($patchText.Trim() -eq '[]' -or $patchText.Trim() -eq '') {
@@ -67,7 +67,7 @@ if ($patchText -match 'dsh-default-model-lock') {
 
 $nodeModules = Join-Path $Profile 'node_modules'
 if (-not (Test-Path -LiteralPath $nodeModules)) { New-Item -ItemType Directory -Path $nodeModules | Out-Null }
-$target = Join-Path $nodeModules 'dsh-default-model-lock'
+$target = Join-Path $nodeModules 'dsh-model-lock'
 if (-not (Test-Path -LiteralPath $target)) {
   New-Item -ItemType Junction -Path $target -Target $PluginPath | Out-Null
   Write-Host "已建立 junction: $target"

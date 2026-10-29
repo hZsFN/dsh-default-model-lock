@@ -12,7 +12,7 @@ foreach ($p in @($srcPkg, $srcPatch)) {
 
 $pkgPath = Join-Path $Profile 'package.json'
 $patchPath = Join-Path $Profile 'cordis.patch.yml'
-$target = Join-Path (Join-Path $Profile 'node_modules') 'dsh-default-model-lock'
+$target = Join-Path (Join-Path $Profile 'node_modules') 'dsh-model-lock'
 
 Copy-Item -LiteralPath $srcPkg -Destination $pkgPath -Force
 Copy-Item -LiteralPath $srcPatch -Destination $patchPath -Force

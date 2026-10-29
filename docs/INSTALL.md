@@ -16,7 +16,7 @@
 # cordis.patch.yml（随包发布）
 - insert:
     - id: default-model-lock
-      name: dsh-default-model-lock
+      name: dsh-model-lock
       config:
         enabled: false
         provider: ''
@@ -28,7 +28,7 @@
 
 ```bash
 # 1) 把插件目录挂进 profile 的 node_modules（不要复制，改源码后重载即生效）
-#    在 <profile>/package.json 里加依赖："dsh-default-model-lock": "link:<插件绝对路径>"
+#    在 <profile>/package.json 里加依赖："dsh-model-lock": "link:<插件绝对路径>"
 # 2) 确认 profile 的 cordis.patch.yml 已包含上面的 insert 段
 ```
 

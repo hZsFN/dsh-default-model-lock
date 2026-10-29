@@ -23,11 +23,11 @@ if (mode === 'help') {
   if (fs.existsSync(root)) throw new Error('隔离目录已存在，拒绝覆盖: ' + root);
   fs.mkdirSync(profile, { recursive: true });
   fs.mkdirSync(work, { recursive: true });
-  const bundles = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', 'dsh-default-model-lock'];
-  fs.writeFileSync(path.join(profile, 'package.json'), JSON.stringify({ name: 'dsh-profile-model-lock-isolation', private: true, version: '1.0.0', dependencies: { 'dsh-default-model-lock': 'link:' + project.replaceAll('\\', '/') }, dsh: { profile: { bundles } } }, null, 2), { flag: 'wx' });
+  const bundles = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', 'dsh-model-lock'];
+  fs.writeFileSync(path.join(profile, 'package.json'), JSON.stringify({ name: 'dsh-profile-model-lock-isolation', private: true, version: '1.0.0', dependencies: { 'dsh-model-lock': 'link:' + project.replaceAll('\\', '/') }, dsh: { profile: { bundles } } }, null, 2), { flag: 'wx' });
   fs.writeFileSync(path.join(profile, 'cordis.patch.yml'), '[]\n', { flag: 'wx' });
   fs.mkdirSync(path.join(profile, 'node_modules'));
-  fs.symlinkSync(project, path.join(profile, 'node_modules', 'dsh-default-model-lock'), 'junction');
+  fs.symlinkSync(project, path.join(profile, 'node_modules', 'dsh-model-lock'), 'junction');
   console.log(JSON.stringify({ home, profile, work, port: 3199, executable: exe, cli }, null, 2));
 } else if (mode === 'app-help' || mode === 'start') {
   if (!fs.existsSync(path.join(profile, 'package.json'))) throw new Error('先运行 prepare');
